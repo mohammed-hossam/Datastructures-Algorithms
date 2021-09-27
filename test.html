@@ -2,9 +2,38 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <link rel="stylesheet" href="style.css" />
     <title>Document</title>
   </head>
   <body>
-    <script src="design pattern.js"></script>
+    <h2>welcome</h2>
+
+    <div id="rootA">
+      <div class="first-child">
+        <div></div>
+      </div>
+      <div class="second-child"></div>
+      <div class="third-child">
+        <div>
+          <div></div>
+          <div id="target-nodeA"></div>
+        </div>
+      </div>
+    </div>
+
+    <div id="rootB">
+      <div class="first-child">
+        <div></div>
+      </div>
+      <div class="second-child"></div>
+      <div class="third-child">
+        <div>
+          <div></div>
+          <div id="target-nodeB"></div>
+        </div>
+      </div>
+    </div>
+
+    <script src="test1.js"></script>
   </body>
 </html>

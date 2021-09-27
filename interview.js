@@ -380,16 +380,23 @@ fib(9); */
 } */
 
 // memoization solution:
-/* function slowFib(n) {
+function slowFib(n) {
   if (n < 2) {
     return n;
   }
   return fib(n - 1) + fib(n - 2);
-} */
-
-function memoize(fn) {
-  const cahe = {};
-  return function (...args) {};
 }
 
-const fib = memoize(slowFib);
+const fib = memoize(slowFib(7));
+function memoize(fn) {
+  const cache = {};
+  return function (...args) {
+    if (cache[args]) {
+      return cache[args];
+    }
+    const result = fn.apply(this, args);
+    cache[args] = result;
+    console.log(cache[args]);
+    return result;
+  };
+}

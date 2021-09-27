@@ -794,9 +794,9 @@ w1.assignWork(emp3); */
 //3) 3nd kol observer hykon leh update method heya ele htkon fe function ele bt3ml nofity.
 
 //*example1:
-/*
-//main Class
- class Product {
+
+//main Class(Observable)(subject)
+/* class Product {
   constructor() {
     // m3lomat el 7ads
     this.price = 0;
@@ -833,6 +833,7 @@ class profit {
   update(product) {
     product.price = product.price * 2;
   }
+  // 23tqd en update=next (in andre react course)
 } */
 
 //* test:

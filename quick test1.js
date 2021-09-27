@@ -184,7 +184,7 @@ console.log(plusplus(x)); */
 /* So we can create an empty object with new Object(). Side note: you should NEVER create an object using the constructor. It's considered bad practice
 https://eslint.org/docs/2.0.0/rules/no-new-wrappers */
 
-// mn l fdal en 25le undefined deh bs l engine hwa ele y7otha b7es 2fhm lw tl3tly en dah msh mene w lw 3ayz 27ot 7aga fdya 27otha ana 27sn b null
+// mn l fdal en 25le undefined deh bs l engine hwa ele y7otha b7es 2fhm lw tl3tly en dah msh mene w lw 3ayz 27ot 7aga fdya 27otha ana 27sn b null, 3ala 2sas en el engine bytl3 undefined error brdo lw feh 7aga undeclared 2w y3ny msh mwgoda 2sln.
 
 //*NaN:
 //bt7wel el 2wal l value l number w b3d kda bttl3 true 2w false
@@ -199,7 +199,7 @@ https://eslint.org/docs/2.0.0/rules/no-new-wrappers */
 
 //Nan mlhash idinty fl javascript y3ny bl8t l math kda bma enha mlhash idientity yb2a msh equal nfsha y3ny lw 3nde 7aga not a number zy catsAge lw 3mlt kda =>catsAge===catsAge (false)
 
-//moomkn brod badal Number.NaN 2st5dm => object.is('mohamed',Nan) //false
+//moomkn brod badal Number.isNaN 2st5dm => object.is('mohamed',Nan) //false
 
 // fl (==) or (===) 2y 7aga mn l operands Nan 7ata lw el etnan byde false enma lw l etnan nan ele btde true heya Object.is
 
@@ -348,12 +348,26 @@ var name = 'Mohammed';
 //     console.log(`i: ${i}`);
 //   }, i * 1000);
 // }
-/* el fkra hena en ele hytb3 hwa 2a5er qema l variable i 3shan lma el call back functoin ele fl settimeout yt7to klhom fl task queue wl event loop ywdehom l callstack yt3mhom execution kolohm byhwro ll var i 3n tre2 el closure fa htkon l i b25er qema leha ayan kant fa 3shan 27l l moshkl adeh m7tag 23ml variable lkol loop t7sl w dah let bt3mlo automatic 2w moomkn brdo 7al tany ene 25le l functionsettimeout tt3rffe scope gded bt3ha fe kol loop badal matt3rf fe scope el for nfsha fa tb2a kol w7da leha scope lw7dha 3n tre2 el iife 3shan el fuction expression zy ma7na 3rfen btt3rf in its own scope */
+/* el fkra hena en ele hytb3 hwa 2a5er qema l variable i 3shan lma el call back functoin ele fl settimeout yt7to klhom fl task queue wl event loop ywdehom l callstack yt3mhom execution kolohm byhwro ll var i 3n tre2 el closure fa htkon l i b25er qema leha ayan kant fa 3shan 27l l moshkl adeh m7tag 23ml variable lkol loop t7sl w dah let bt3mlo automatic.
+ 2w moomkn brdo 7al tany ene 25le l callback function bta3t settimeout tt3rf fe scope gded bt3ha fe kol loop badal matt3rf fe scope el for nfsha fa tb2a kol w7da leha scope lw7dha 3n tre2 el iife 3shan el fuction expression zy ma7na 3rfen btt3rf in its own scope */
 
+//? using let
 /* for (let i = 1; i <= 3; i++) {
   setTimeout(function () {
     console.log(`i: ${i}`);
   }, i * 1000);
+} */
+
+//? using iife
+/* for (let i = 1; i <= 3; i++) {
+  setTimeout(
+    (function () {
+      return function () {
+        console.log(`i: ${i}`);
+      };
+    })(i),
+    i * 1000
+  );
 } */
 
 /* -------------------------------------------------------------------------- */
@@ -366,7 +380,7 @@ var name = 'Mohammed';
 //el call site hwa el makan ele 3mlt feh invocation l function mo3yna lw lw 3mlt invocation fl global yb2a kda l call site hwa el global exection context w lw 3mlt invocation l function gwa function l parent function heya htkon l call site
 
 //* lexical scope vs dynamic scope:
-// lexical scope y3tmd 3ala enta htktb l code bta3k fan bzbt ee hwa bysht8l 3ala el varables wl functions w kda enma el dynamic m3naha eno y3tmd 3ala enta ht3ml call ll function ezay  w dah ele bytb2 m3 keyword this bs m3 this brdo moomkn tsht8l lexical lw fel arrow function
+// lexical scope y3tmd 3ala enta htktb l code bta3k fan bzbt ele hwa bysht8l 3ala el varables wl functions w kda enma el dynamic m3naha eno y3tmd 3ala enta ht3ml call ll function ezay  w dah ele bytb2 m3 keyword this bs m3 this brdo moomkn tsht8l lexical lw fel arrow function
 
 //* this precedence:
 /* 
@@ -622,7 +636,7 @@ workshop.ask(); //  (el objects msh by3ml scope l puter scope bta3 l arrow funct
 workshop.ask.call(workshop); //call dont work */
 
 //*mol5s:
-//el arrow unctions btsht8l lexical y3ny 3ala 7sb l function mktoba fan wel parent btha bykon 3ala 7sb mktoba fan brdo gsm l function nfso msh babos 3ala et3mlha invocation fan enma lw msh arrow y2ba el mwdo3 dynmic y3ny sh habos 3ala gsm el function nfso 3shan 23rf his btshar 3ala eh la2 habos 3ala tm estd3a2ha fan bzbt w lw mfesh objet estd3aha htkon automatic el global
+//el arrow functions btsht8l lexical y3ny 3ala 7sb l function mktoba fan wel parent btha bykon 3ala 7sb mktoba fan brdo gsm l function nfso msh babos 3ala et3mlha invocation fan enma lw msh arrow y2ba el mwdo3 dynmic y3ny sh habos 3ala gsm el function nfso 3shan 23rf his btshar 3ala eh la2 habos 3ala tm estd3a2ha fan bzbt w lw mfesh objet estd3aha htkon automatic el global
 
 /* ----------------------------------- end ---------------------------------- */
 
@@ -723,19 +737,6 @@ person.fullName = 'Mohammad';
 // console.log(person);
 console.log(person.fullName); //undefined withour getter Mohammad with the getter
 console.log(person._fullName); */
-
-/* ----------------------------------- end ---------------------------------- */
-//hena 3adya 5ales el dunderproto byshar 3ala el constructor's prototye:
-/* function people(nume, age) {
-  this.nume = nume;
-  this.age = age;
-}
-people.prototype.fullName = function fullName(hisName) {
-  console.log(`the full name is blabla ${hisName}`);
-};
-var people_1 = new people('saeed', 27);
-console.log(people_1);
-console.dir(people_1.__proto__); */
 
 /* ----------------------------------- end ---------------------------------- */
 
@@ -1031,6 +1032,21 @@ limit: Defines the upper limit on the number of splits to be found in the given 
 Return value
 This function returns an array of strings that is formed after splitting the given string at each point where the separator occurs. */
 
+//* replace:
+//The replace() method returns a new string with some or all matches of a pattern replaced by a replacement. The pattern can be a string or a RegExp, and the replacement can be a string or a function to be called for each match. If pattern is a string, only the first occurrence will be replaced.
+
+//* push:
+//The push() method adds one or more elements to the end of an array and returns the new length of the array.
+
+//* pop:
+//The pop() method removes the last element from an array and returns that element. This method changes the length of the array.
+
+//* shift:
+//The shift() method removes the first element from an array and returns that removed element. This method changes the length of the array.
+
+//* unshift:
+//The unshift() method adds new items to the beginning of an array, and returns the new length. unshift() overwrites the original array.
+
 //* Math.sign(number);
 /* 
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/sign
@@ -1040,6 +1056,12 @@ If the argument is negative, returns -1.
 If the argument is positive zero, returns 0.
 If the argument is negative zero, returns -0.
 Otherwise, NaN is returned. */
+
+//*Object.seal():
+//The Object.seal() method seals an object, preventing new properties from being added to it and marking all existing properties as non-configurable. Values of present properties can still be changed as long as they are writable. (prevent from deleting)
+
+//*preventExtensions():
+//The Object.preventExtensions() method prevents new properties from ever being added to an object (i.e. prevents future extensions to the object).
 
 /* -------------------------------------------------------------------------- */
 /*                                 new Keyword                                */
@@ -1052,3 +1074,38 @@ Otherwise, NaN is returned. */
 // Note: Properties/objects added to the construction function prototype are therefore accessible to all instances created from the constructor function (using new).
 //3) Binds the newly created object instance as the this context (i.e. all references to this in the constructor function now refer to the object created in the first step).
 //4) Returns this if the function doesn't return an object.
+
+// inherritance vs composition:
+/* const eater = (state) => {
+  return {
+    eat(amount) {
+      console.log(`${state.name} is eating.`);
+      state.energy += amount;
+    },
+  };
+};
+
+function Cat(name, energy, declawed) {
+  this.name = name;
+  this.energy = energy;
+  this.declawed = declawed;
+
+  return Object.assign(this, eater(this));
+}
+
+const charles = new Cat('Charles', 10, false);
+charles.eat(2); */
+
+//* localStorage vs indexedDB:
+/* localStorage, or more accurately Web Storage, was designed for smaller amounts of data. It's essentially a strings only key - value storage, with a simplistic synchronous API. That last part is key. Although there's nothing in the specification that prohibits an asynchronous Web Storage, currently all implementations are synchronous (i.e. blocking requests). Even if you didn't mind using a naive key - value storage for larger amounts of data, your clients will mind waiting forever for your application to load.
+indexedDB, on the other hand, was designed to work with significantly larger amounts of data. First, in theory, it provides both a synchronous and an asynchronous API. In practice, however, all current implementations are asynchronous, and requests will not block the user interface from loading. Additionally, indexedDB, as the name reveals, provides indexes. You can run rudimentary queries on your database and fetch records by looking up theirs keys in specific key ranges. indexedDB also supports transactions, and provides simple types (e.g. Date).
+
+IndexedDB is not a key-value store in the same way that Local Storage is. Local storage just stores strings, so to put an object in local storage the usual approach is to JSON.stringify it:
+myObject = {a: 1, b: 2, c: 3};
+localStorage.setItem("uniq", JSON.stringify(myObject));
+This is fine for finding the object with key uniq, but the only way to get the properties of myObject back out of local storage is to JSON.parse the object and examine it:
+var myStorageObject = JSON.parse(localStorage.getItem("uniq"));
+window.alert(myStorageObject.b);
+This is fine if you only have one, or a few objects, in local storage. But imagine you have a thousand objects, all of which have a property b, and you want to do something just with those ones where b==2. With local storage you'll have to loop through the entire store and check b on each item, which is a lot of wasted processing.
+With IndexedDB you can store stuff other than strings in the value: "This includes simple types such as DOMString and Date as well as Object and Array instances." Not only that, but you can create indexes on properties of the objects that you stored in the value. So with IndexedDb you can put those same thousand objects in it but create an index on the b property and use that to just retrieve the objects where b==2 without the overhead of scanning every object in the store.
+*/
