@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+
+    <title>javascript dom</title>
+  </head>
+
+  <body>
+    <div class="test">
+      <h1 class="test">welcome</h1>
+      <p class="test" id="classtest">hjhjksdgshdkjsdh</p>
+      <p id="idtest">lorem ipsum</p>
+    </div>
+
+    <img src="http://placehold.it/100/100" alt="khsj" />
+    <img src="http://placehold.it/200/100" alt="kh" />
+    <img src="http://placehold.it/100/100" alt="ksj" />
+    <img src="http://placehold.it/300/100" alt="hsj" />
+
+    <div class="fat7y"></div>
+    <div class="ss">this s a div <span>tamam</span> wala eh</div>
+    &lt; &gt; &amp;
+
+    <div id="" class="testc"></div>
+    <img id="imo" src="" alt="kjhkj" title="hgfk" name="sss" />
+
+    <div id="main" class="show cool main-div zero">class div</div>
+
+    <button class="shsh">Add class</button>
+    <!--add remove  -->
+
+    <!-- toggle : -->
+    <style>
+      .hidden {
+        visibility: hidden;
+      }
+    </style>
+    <div id="shlna" class="hidden">shlna ya 3am mn hona</div>
+    <button id="toggle">shlna</button>
+
+    <!-- Elements - Children: -->
+
+    <div id="child">
+      welcome
+      <h2>heading</h2>
+      <!-- dkke -->
+      <!-- ssss -->
+
+      <p class="test">paragraph</p>
+    </div>
+
+    <!-- Elements - Children - Append Child -insert child -->
+    <div id="append"></div>
+
+    <!-- remove child  -->
+    <div id="remove">
+      <h2>welcome remove</h2>
+      <div>this is a div</div>
+      <p>ths is a oharagraph</p>
+    </div>
+
+    <!-- Node [ Name, Value, Type ] -->
+    <div id="node">
+      <h2>welcome node</h2>
+      <div>this is a div</div>
+      <p>ths is a oharagraph</p>
+    </div>
+
+    <!-- clone node -->
+    <div class="clone">
+      <p>this is main p</p>
+    </div>
+    <div class="new"></div>
+
+    <!-- Elements - Parent Element -->
+    <div class="parent">
+      <button>close</button>
+    </div>
+
+    <!-- Elements - Next, Previous Sibling -->
+    <div id="sibling">
+      first text
+      <p>this is p</p>
+      second text
+      <div>thi is div</div>
+      final text
+    </div>
+
+    <!-- Elements - Focus, Blur -->
+    <form id="focus">
+      <input type="text" id="myInput" />
+    </form>
+
+    <!-- Elements - Click -->
+    <div id="ccc">
+      <button>hide my div</button>
+    </div>
+
+    <!-- Elements - Add Event Listener -->
+    <button id="eat">eat monsters</button>
+    <button id="add">add event</button>
+    <div id="m1">monster 1</div>
+    <div id="m2">monster2</div>
+
+    <!-- Elements - contains -->
+    <div id="contain">
+      <div>
+        <p>this is a <span id="child">paragraph</span></p>
+      </div>
+    </div>
+
+    <!-- client height-width -->
+    <div id="height">client height</div>
+    <style>
+      #height {
+        padding: 20px;
+        background-color: #eee;
+        margin: 10px;
+        border: 7px solid red;
+        overflow: scroll;
+      }
+    </style>
+
+    <!-- scroll height-width -->
+    <div id="scroll">
+      <div id="scroll-child">child scroll</div>
+    </div>
+    <style>
+      #scroll {
+        height: 300px;
+        width: 300px;
+        padding: 20px;
+        background-color: #eee;
+        margin: 10px;
+        border: 7px solid red;
+        overflow: scroll;
+      }
+      #scroll-child {
+        height: 800px;
+        width: 800px;
+        background: blue;
+      }
+    </style>
+
+    <!-- offset height-width -->
+    <div id="offset">
+      <div id="offset-child">child offset</div>
+    </div>
+    <style>
+      #offset {
+        height: 300px;
+        width: 300px;
+        padding: 20px;
+        background-color: #eee;
+        margin: 10px;
+        border: 20px solid red;
+        overflow: scroll;
+      }
+      #offset-child {
+        height: 800px;
+        width: 800px;
+        background: blue;
+      }
+    </style>
+
+    <!-- client top - left -->
+    <div id="border"></div>
+    <style>
+      #border {
+        height: 200px;
+        width: 200px;
+        background: red;
+        border: 10px solid blue;
+        overflow: scroll;
+        direction: rtl;
+      }
+    </style>
+
+    <!-- style -->
+    <div id="style">obaaaaa</div>
+
+    <!-- how to make event -->
+    <div id="event">this is div</div>
+    <button id="change" onclick="change()">change color</button>
+
+    <!-- onload onscroll onresize -->
+    <div id="onload"></div>
+
+    <!-- onfocus onblur onsubmit -->
+    <form id="fego">
+      <input id="input" type="text" />
+      <input id="sub" type="submit" value="go" />
+    </form>
+    <div id="note"></div>
+
+    <!-- oncontextmenu onMouse -->
+    <div id="on">this is div</div>
+
+    <!-- onkey -->
+    <form id="form" onsubmit="(function(e){e.preventDefault();})(event)">
+      <input id="key" type="text" />
+    </form>
+    <div id="notice"></div>
+    <script src="dom.js"></script>
+  </body>
+</html>
