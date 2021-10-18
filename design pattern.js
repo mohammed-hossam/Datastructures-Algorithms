@@ -571,6 +571,8 @@ console.log(pinkdress2.dressPrice()); */
 //ANCHOR Facade(مظهر زائف):
 //provides a simple,easy to understand user interface over a large and sophisticated body of code.
 
+//Abstract Factory can serve as an alternative to Facade when you only want to hide the way the subsystem objects are created from the client code.
+
 //* example1:
 /* class Inventory {
   constructor() {
@@ -849,6 +851,8 @@ product1.setBasePrice(30); */
 /* -------------------------------------------------------------------------- */
 //ANCHOR Strategy:
 //bykon 3nde strategies mo5tlfa (tro2 mo5tlfa/functions) l3ml nfs el 7aga.
+//Strategy is a behavioral design pattern that turns a set of behaviors into objects and makes them interchangeable inside original context object. The original object, called context, holds a reference to a strategy object and delegates it executing the behavior. In order to change the way the context performs its work, other objects may replace the currently linked strategy object with another one.
+//Strategy usually describes different ways of doing the same thing, letting you swap these algorithms within a single context class.
 
 //*example1:
 /*
@@ -871,18 +875,19 @@ class HourlyStrategy {
   }
 }
 
-// mainClass
+// mainClass (context)
 class Employee {
   constructor(employeeDetails, paymentDetails) {
     this.name = employeeDetails.name;
     this.paymentDetails = paymentDetails;
   }
 
-  //put the strategy you want here
+  //put the strategy you want here 
   sendPayment(strategyClass) {
     const strategy = new strategyClass(this.paymentDetails);
     const paymentAmount = strategy.paymentAmount();
     console.log(`sendeing ${paymentAmount} to ${this.name}`);
+    // (Note i think in typesript this will be the abstract class in grider example for sorter)
   }
 } */
 
@@ -1058,3 +1063,15 @@ const controlPanel = new PrinterControlPanel();
 controlPanel.pressButton(turnOnCommand);
 controlPanel.pressButton(turnOffCommand);
 controlPanel.pressButton(printCommand); */
+
+//singleton
+//observer
+//Factory
+//Builder
+//strategy
+//facade
+
+//ideas only
+//proxy
+//decorator
+//composite

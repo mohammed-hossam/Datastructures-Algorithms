@@ -1,3 +1,12 @@
+//* Notes:
+// https://www.bigocheatsheet.com/
+// https://www.youtube.com/user/AlgoRythmics/videos
+// https://stackoverflow.com/questions/1517793/what-is-stability-in-sorting-algorithms-and-why-is-it-important
+
+/* Best case is represented by Ω(n) notation. omega
+Worst case is represented by Ο(n) notation. ohh
+Average case is represented by Θ(n) notation. seta */
+
 /* -------------------------------------------------------------------------- */
 /*                          Frequency Counter patern                          */
 /* -------------------------------------------------------------------------- */
@@ -361,8 +370,8 @@ search([1, 2, 3, 4, 5, 6, 8, 9, 12, 15, 16, 29], 15); */
 /* -------------------------------------------------------------------------- */
 // ANCHOR selectionsort
 //hena 3ks el bubble bgm3 el so8yr w7to fl 2wel.
-// tbd2 mn i fl outer loop 3ady.
-//hena ana 3yz 23od 2shof men el minimum fl loop el w7da el 5argya w fel loop el w7da 2tl3 mnha el min w dah ele 23ml beh swap makan el index ele sh8al 3leh.
+// tbd2 mn i fl outer loop 3ady. w l7d 3dd i < arr.length - 1 brdo zy el bubblesort.
+//hena ana 3yz 23od 2shof men el minimum fl loop el w7da el 5argya w fel loop el w7da 2tl3 mnha el min w dah ele 23ml beh swap makan el index ele sh8al 3leh fl loop el 5argya.
 
 //* time complexity:
 // worst case=>O(n^2)
@@ -374,13 +383,14 @@ search([1, 2, 3, 4, 5, 6, 8, 9, 12, 15, 16, 29], 15); */
 /* function selectionSort(arr) {
   for (let i = 0; i < arr.length - 1; i++) {
     let currentMinIdx = i;
-    for (let j = i; j < arr.length - 1; j++) {
-      if (arr[currentMinIdx] > arr[j + 1]) {
-        currentMinIdx = j + 1;
+    for (let j = i + 1; j < arr.length - 1; j++) {
+      if (arr[currentMinIdx] > arr[j]) {
+        currentMinIdx = j;
       }
     }
 
     if (i !== currentMinIdx) {
+      //el if condition 3shan moomkn ykon ele hnm3mlo swap hwa 2sln mwgod fe mkano fa nwfr el swap msh 2ktr(heya 7aga mlhash lazma 2wi y3ny)
       [arr[i], arr[currentMinIdx]] = [arr[currentMinIdx], arr[i]];
     }
   }
@@ -395,30 +405,31 @@ search([1, 2, 3, 4, 5, 6, 8, 9, 12, 15, 16, 29], 15); */
 /* -------------------------------------------------------------------------- */
 // ANCHOR insertionsort
 // tbd2 mn tany element fl array fel outer loop w b3d kda 2qarn bele 2lbo w b3d kda 2zwd fl outer loop wbd2 bl talet w 2qarn bkol ele 2blo w hakza.
-//mn esmha kda heya 2fdl 2st5dam leha lw b3ml insertion l rqm msln mo3yn l array ; 3shan heya bt7afz 3al agmb fl 2rray sorted w htshof el rmq el gded dah ht7to fan bzbt.
+//mn esmha kda heya 2fdl 2st5dam leha lw b3ml insertion l rqm msln mo3yn fe array ; 3shan heya bt7afz 3al agmb fl Array sorted w htshof el rmq el gded dah ht7to fan bzbt.
 
 //* time complexity:
 // worst case=>O(n^2)
 // best case=>O(n)(lw el array totaly or nearly sorted)
 // space complexity= >O(1)
-
 //* implementation:
 /* function insertionSort(arr) {
   for (let i = 1; i < arr.length; i++) {
     let currentNode = arr[i];
-    for (let j = 1; j <= i && currentNode < arr[i - j]; j++) {
-      [arr[i + 1 - j], arr[i - j]] = [arr[i - j], arr[i + 1 - j]];
+    for (let j = i - 1; currentNode < arr[j]; j--) {
+      [arr[j + 1], arr[j]] = [arr[j], arr[j + 1]];
     }
   }
   console.log(arr);
 } */
 
 // insertionSort([3, 4, 9, 30, 8, 13, 7, 5, 9, 38, 46]);
+// insertionSort([2, 1, 9, 76, 0]);
 // insertionSort([4, 3, 9, 30, 8, 13, 7, 5, 9, 38, 46, 7, 50]);
 
 /* -------------------------------------------------------------------------- */
 /*                                 Merge Sort                                 */
 /* -------------------------------------------------------------------------- */
+// ANCHOR mergesort
 
 //* time complexity:
 //for spliting(divide and conquer)=>O(log n)
@@ -464,7 +475,6 @@ function merge(arr1, arr2) {
 // merge([1, 10, 50], [2, 14, 99, 100]);
 // debugger;
 // mergeSort([1, 10, 50, 2, 14, 99, 100]);
-// ANCHOR mergesort
 
 /* -------------------------------------------------------------------------- */
 /*                                 Quick Sort                                 */

@@ -343,11 +343,11 @@ var name = 'Mohammed';
 
 //* example loops:
 
-// for (var i = 1; i <= 3; i++) {
-//   setTimeout(function () {
-//     console.log(`i: ${i}`);
-//   }, i * 1000);
-// }
+/* for (var i = 0; i < 3; i++) {
+  setTimeout(function () {
+    console.log(`i: ${i}`);
+  }, i * 1000);
+} */
 /* el fkra hena en ele hytb3 hwa 2a5er qema l variable i 3shan lma el call back functoin ele fl settimeout yt7to klhom fl task queue wl event loop ywdehom l callstack yt3mhom execution kolohm byhwro ll var i 3n tre2 el closure fa htkon l i b25er qema leha ayan kant fa 3shan 27l l moshkl adeh m7tag 23ml variable lkol loop t7sl w dah let bt3mlo automatic.
  2w moomkn brdo 7al tany ene 25le l callback function bta3t settimeout tt3rf fe scope gded bt3ha fe kol loop badal matt3rf fe scope el for nfsha fa tb2a kol w7da leha scope lw7dha 3n tre2 el iife 3shan el fuction expression zy ma7na 3rfen btt3rf in its own scope */
 
@@ -726,6 +726,7 @@ console.log(obj.nume); */
   constructor() {}
 
   set fullName(name) {
+    console.log('welcome from setter function');
     this._fullName = name;
   }
   get fullName() {
@@ -736,8 +737,8 @@ var person = new test();
 person.fullName = 'Mohammad';
 // console.log(person);
 console.log(person.fullName); //undefined withour getter Mohammad with the getter
-console.log(person._fullName); */
-
+console.log(person._fullName);
+ */
 /* ----------------------------------- end ---------------------------------- */
 
 //*prototype example:
@@ -974,6 +975,22 @@ function test(objt) {
 test(obj);
 console.log(obj); */
 
+/* ----------------------------------- end ---------------------------------- */
+
+/* -------------------------------------------------------------------------- */
+/*                                 new Keyword                                */
+/* -------------------------------------------------------------------------- */
+// ANCHOR - new Keyword:
+
+//from MDN:
+//1) Creates a blank, plain JavaScript object.
+//2) Adds a property to the new object (__proto__) that links to the constructor function's prototype object
+// Note: Properties/objects added to the construction function prototype are therefore accessible to all instances created from the constructor function (using new).
+//3) Binds the newly created object instance as the this context (i.e. all references to this in the constructor function now refer to the object created in the first step).
+//4) Returns this if the function doesn't return an object.
+
+/* ----------------------------------- end ---------------------------------- */
+
 /* -------------------------------------------------------------------------- */
 /*                               web performance                              */
 /* -------------------------------------------------------------------------- */
@@ -1063,19 +1080,18 @@ Otherwise, NaN is returned. */
 //*preventExtensions():
 //The Object.preventExtensions() method prevents new properties from ever being added to an object (i.e. prevents future extensions to the object).
 
-/* -------------------------------------------------------------------------- */
-/*                                 new Keyword                                */
-/* -------------------------------------------------------------------------- */
-// ANCHOR - new Keyword:
+//*Object.getOwnPropertyDescriptor(object,'prperty') :
+//writable: if the property can be changed.
 
-//from MDN:
-//1) Creates a blank, plain JavaScript object.
-//2) Adds a property to the new object (__proto__) that links to the constructor function's prototype object
-// Note: Properties/objects added to the construction function prototype are therefore accessible to all instances created from the constructor function (using new).
-//3) Binds the newly created object instance as the this context (i.e. all references to this in the constructor function now refer to the object created in the first step).
-//4) Returns this if the function doesn't return an object.
+//enumerable: if the property can be looped over in a forinloop .
 
-// inherritance vs composition:
+//value: current value.
+
+//configurable: if the Descriptors configration can be changed and if the property can be deleted.
+
+//to changes them=> Object.defineProperty(object,'prperty',{writable:false})
+
+//* inherritance vs composition:
 /* const eater = (state) => {
   return {
     eat(amount) {
@@ -1096,6 +1112,10 @@ function Cat(name, energy, declawed) {
 const charles = new Cat('Charles', 10, false);
 charles.eat(2); */
 
+/* 
+in typescript both inheritance and composition byt3mlo 8alban en 3n tre2 en bykon feh funtion mo3yna w bytm 3mlha implemintaion btro2 mo5tlfa, bs fl composition bl interface wfl inheritance bl extend w override, w tb3an el inhertiance moomkn yt3m beh 7agat 2ktr mn kda. 
+*/
+
 //* localStorage vs indexedDB:
 /* localStorage, or more accurately Web Storage, was designed for smaller amounts of data. It's essentially a strings only key - value storage, with a simplistic synchronous API. That last part is key. Although there's nothing in the specification that prohibits an asynchronous Web Storage, currently all implementations are synchronous (i.e. blocking requests). Even if you didn't mind using a naive key - value storage for larger amounts of data, your clients will mind waiting forever for your application to load.
 indexedDB, on the other hand, was designed to work with significantly larger amounts of data. First, in theory, it provides both a synchronous and an asynchronous API. In practice, however, all current implementations are asynchronous, and requests will not block the user interface from loading. Additionally, indexedDB, as the name reveals, provides indexes. You can run rudimentary queries on your database and fetch records by looking up theirs keys in specific key ranges. indexedDB also supports transactions, and provides simple types (e.g. Date).
@@ -1108,4 +1128,83 @@ var myStorageObject = JSON.parse(localStorage.getItem("uniq"));
 window.alert(myStorageObject.b);
 This is fine if you only have one, or a few objects, in local storage. But imagine you have a thousand objects, all of which have a property b, and you want to do something just with those ones where b==2. With local storage you'll have to loop through the entire store and check b on each item, which is a lot of wasted processing.
 With IndexedDB you can store stuff other than strings in the value: "This includes simple types such as DOMString and Date as well as Object and Array instances." Not only that, but you can create indexes on properties of the objects that you stored in the value. So with IndexedDb you can put those same thousand objects in it but create an index on the b property and use that to just retrieve the objects where b==2 without the overhead of scanning every object in the store.
+*/
+
+/* 
+class Animal {
+  constructor(name, age) {
+    this.age = age;
+    this.name = name;
+  }
+
+  sound() {
+    console.log('defaault sound');
+  }
+}
+
+class Cat extends Animal {
+  constructor(name, age) {
+    super(name, age);
+  }
+
+  sound() {
+    console.log('meow sound');
+  }
+
+  get name() {
+    console.log('welcome from getter function');
+    return this._name;
+  }
+  set name(name) {
+    console.log('welcome from setter function');
+    this._name = name;
+  }
+  get breed() {
+    console.log('welcome from getter function');
+    return this._breed;
+  }
+  set breed(breed) {
+    console.log('welcome from setter function');
+    this._breed = breed;
+  }
+}
+
+class Dog extends Animal {
+  constructor(name, age) {
+    super(name, age);
+  }
+
+  sound() {
+    console.log('howhow sound');
+  }
+}
+
+// let hanafy = new Dog('7anafy', 15);
+// let elephant = new Animal('sa3d', 15);
+let hamdya = new Cat('7amdya');
+hamdya.breed = 'syamy';
+console.log(hamdya);
+console.log(hamdya.name);
+ */
+
+/* let temp = 'hi';
+
+function display() {
+  console.log(temp);
+  let temp = 'bye';
+}
+
+display(); */
+
+/*
+1st step(gm3 kol el variables):
+put variable temp im memory with 
+put variable display im memory as a function body
+
+2nd step(nfz):
+put temp ='hi
+invoke function display;
+   1st step(gm3 kol el variables):
+    put variable temp im memory with undefined
+    2nd step(nfz):
 */
