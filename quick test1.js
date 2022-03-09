@@ -343,11 +343,11 @@ var name = 'Mohammed';
 
 //* example loops:
 
-/* for (var i = 0; i < 3; i++) {
+for (var i = 0; i < 3; i++) {
   setTimeout(function () {
     console.log(`i: ${i}`);
   }, i * 1000);
-} */
+}
 /* el fkra hena en ele hytb3 hwa 2a5er qema l variable i 3shan lma el call back functoin ele fl settimeout yt7to klhom fl task queue wl event loop ywdehom l callstack yt3mhom execution kolohm byhwro ll var i 3n tre2 el closure fa htkon l i b25er qema leha ayan kant fa 3shan 27l l moshkl adeh m7tag 23ml variable lkol loop t7sl w dah let bt3mlo automatic.
  2w moomkn brdo 7al tany ene 25le l callback function bta3t settimeout tt3rf fe scope gded bt3ha fe kol loop badal matt3rf fe scope el for nfsha fa tb2a kol w7da leha scope lw7dha 3n tre2 el iife 3shan el fuction expression zy ma7na 3rfen btt3rf in its own scope */
 
@@ -390,9 +390,9 @@ var name = 'Mohammed';
 4)global object(undifened in strict mode)
  */
 //Note: lw est5dmt keyword bind 3shan 28yr context this mynf3sh 28yr lcontext tany b3d kda b bind tany lw h8yr lazm yb2a b new keyword
+// call() method takes the arguments separated by comma while apply() method takes the array of arguments.
 
-/* 
-var obj = {
+/* var obj = {
   teacher: 'Kyle',
   ask: function ask(input) {
     console.log(this.teacher, input);
@@ -557,40 +557,40 @@ obj.take(() => {
 }); */
 
 //*lexical scope(parent bta3 el callback hwa el global scope fa this heya el global heya)(msh babos 8er 3ala el function zat nfsha bs mlesh d3wa men ele mstd3eha 5alass leya d3wa bmknha wl parent bt3ha lexically enma lw dynamic habos 3ala men ele mstd3eha bzbt w lw mfesh object mstd3eha hyon automatic el global)
-/* var obj = {
-  nama: 'memo',
-  take: function take(cb) {
-    var fun = cb;
-    var obj2 = {
-      nama: 'Mohammad',
-      maka: fun,
-    };
+// var obj = {
+//   nama: 'memo',
+//   take: function take(cb) {
+//     var fun = cb;
+//     var obj2 = {
+//       nama: 'Mohammad',
+//       maka: fun,
+//     };
 
-    obj2.maka();
-  },
-};
-var nama = 'Khaled';
-obj.take(() => {
-  console.log(this.nama);
-}); */
+//     obj2.maka();
+//   },
+// };
+// var nama = 'Khaled';
+// obj.take(() => {
+//   console.log(this.nama);
+// });
 
 //*dynamic scope (obj2 hwa ele mstd3y maka)(babos 3ala men el object ele mstd3y el function)
-/* var obj = {
-  nama: 'memo',
-  take: function take(cb) {
-    var fun = cb;
-    var obj2 = {
-      nama: 'Mohammad',
-      maka: fun,
-    };
+// var obj = {
+//   nama: 'memo',
+//   take: function take(cb) {
+//     var fun = cb;
+//     var obj2 = {
+//       nama: 'Mohammad',
+//       maka: fun,
+//     };
 
-    obj2.maka();
-  },
-};
-var nama = 'Khaled';
-obj.take(function hoba() {
-  console.log(this.nama);
-}); */
+//     obj2.maka();
+//   },
+// };
+// var nama = 'Khaled';
+// obj.take(function hoba() {
+//   console.log(this.nama);
+// });
 
 //*msal yo7aky l settimeout:(msal 3mlo 3shan n3rf en el callback function el parent bt3ha msh l function ele mstd3yaha enma el outer function)
 /* function cb(fn) {
@@ -730,6 +730,7 @@ console.log(obj.nume); */
     this._fullName = name;
   }
   get fullName() {
+    console.log('welcome from getter function');
     return this._fullName;
   }
 }
@@ -1028,6 +1029,32 @@ At that time the HTML will be parsed first, after that the CSS will be parsed. O
 
 If JS scripts have the defer attribute (which by default is enabled) they will block the parsing process, until the JS file is fetched (either from the network, or from the local cache), parsed, and executed. However, you can add the async attribute to <script> tags, this will treat them like CSS files. – Keimeno 1 hour ago */
 
+/* 
+https://stackoverflow.com/questions/34289535/why-first-paint-is-happening-before-domcontentloaded
+
+DOMContentLoaded means that the parser has completed converting the HTML into DOM nodes and executed any synchronous scripts.
+That does not preclude the browser from rendering an incomplete DOM/CSSOM tree. In fact it has to be able to perform reflows anyway in case javascript queries computed CSS properties. And if it can do reflows on incomplete trees it may as well render them.
+This is also relevant for large documents streamed from a server. The user can already start reading it before it has completed loading.
+It is important to understand that the whole parsing / evaluation / rendering process is a stream processing pipeline with some parts even done in parallel / speculatively. The later stages of the pipeline do not wait for the earlier stages to finish, instead they take the outputs as they arrive and process them as soon as enough information is available to do the next increment.
+E.g. the parser obviously cannot emit Element nodes before processing all of its attributes, but it can emit the node while still processing its child tree. And the renderer may render the node without its children. And it may be rendered with incomplete styles only to undergo a reflow later, e.g. when javascript inserts another style sheet or simply because the child nodes which have yet to be inserted affect how it will be rendered.
+
+http://www.html5rocks.com/en/tutorials/internals/howbrowserswork/#The_main_flow
+
+It's important to understand that this is a gradual process. For better user experience, the rendering engine will try to display contents on the screen as soon as possible. It will not wait until all HTML is parsed before starting to build and layout the render tree. Parts of the content will be parsed and displayed, while the process continues with the rest of the contents that keeps coming from the network.
+
+Historically (at least in firefox) there used to be an initial paint delay during which the page was not rendered until it either was ready or the delay timer expired. The default setting for that delay was lowered repeatedly over the years until it reached 5ms which is less than the refresh rate interval on many monitors (16ms on 60Hz displays). This behavior may have lead to the inaccurate impression that pages are only rendered on DOMContentLoaded, but even back then a user would still have seen a partial page render on a sufficiently slow page.
+
+Forgive me if I am wrong, "A critical resource is a resource that could block initial rendering of the page" So far as I understood, CSSOM was critical resource and complete CSSOM was required before first rendering. was I wrong? – 
+Al-Alamin
+ Dec 4 '18 at 9:57
+
+@Al-Alamin if I read the specs correctly then stylesheets can only be script-blocking (and only under some conditions). Some scripts in turn can be parser-blocking. Only when a script-blocking stylesheet is present before a parser-blocking script in the <head> can a stylesheet block effectively block an initial paint, otherwise partial paints may happen. And if they're located in the <body> or script-inserted then a partial render is possible anyway. – 
+the8472
+ Dec 5 '18 at 22:09
+
+ also this is here : https://javascript.info/onload-ondomcontentloaded#domcontentloaded-and-styles
+*/
+
 /* -------------------------------------------------------------------------- */
 /*                                   monw3at                                  */
 /* -------------------------------------------------------------------------- */
@@ -1048,6 +1075,17 @@ console.log(myKeys); */
 limit: Defines the upper limit on the number of splits to be found in the given string. If the string remains unchecked after the limit is reached then it is not reported in the array.
 Return value
 This function returns an array of strings that is formed after splitting the given string at each point where the separator occurs. */
+
+//* Splice vs Slice vs Split:
+//https://www.freecodecamp.org/news/lets-clear-up-the-confusion-around-the-slice-splice-split-methods-in-javascript-8ba3266c29ae/
+/* Splice and Slice both are Javascript Array functions. The splice() method returns the removed item(s) in an array and slice() method returns the selected element(s) in an array, as a new array object. The splice() method changes the original array and slice() method doesn't change the original array.
+
+Split ( )
+Slice( ) and splice( ) methods are for arrays. The split( ) method is used for strings. It divides a string into substrings and returns them as an array. It takes 2 parameters, and both are optional. string.split(separator, limit);
+Separator: Defines how to split a string… by a comma, character etc.
+Limit: Limits the number of splits with a given number
+note: If we have a usage like this: array.split(""); then each character of the string will be divided as substrings:
+*/
 
 //* replace:
 //The replace() method returns a new string with some or all matches of a pattern replaced by a replacement. The pattern can be a string or a RegExp, and the replacement can be a string or a function to be called for each match. If pattern is a string, only the first occurrence will be replaced.
@@ -1073,6 +1111,9 @@ If the argument is negative, returns -1.
 If the argument is positive zero, returns 0.
 If the argument is negative zero, returns -0.
 Otherwise, NaN is returned. */
+
+//*Object.freeze():
+//The Object.freeze() method freezes an object. A frozen object can no longer be changed; freezing an object prevents new properties from being added to it, existing properties from being removed, prevents changing the enumerability, configurability, or writability of existing properties, and prevents the values of existing properties from being changed. In addition, freezing an object also prevents its prototype from being changed. freeze() returns the same object that was passed in.
 
 //*Object.seal():
 //The Object.seal() method seals an object, preventing new properties from being added to it and marking all existing properties as non-configurable. Values of present properties can still be changed as long as they are writable. (prevent from deleting)

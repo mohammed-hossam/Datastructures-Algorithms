@@ -570,3 +570,14 @@ parentNode or parentElement
 /* The onload function is not run until all the information on the page is loaded. This leads to a substantial delay before any code is executed.
 
 onDocumentReady loads the code just after the DOM is loaded. This allows early manipulation of the code. */
+
+/* const htmlStr = `<div><p>foo</p><p>bar</p></div>`;
+const parser = new DOMParser();
+const doc = parser.parseFromString(htmlStr, 'text/html');
+
+console.log(typeof doc);
+console.log( doc);
+console.log(Array.from(doc.body.getElementsByTagName("*")) );
+htmlStr.match(/<[^>]+>/gi) 
+htmlStr.replace(/[p8074]/gi,'') 
+*/

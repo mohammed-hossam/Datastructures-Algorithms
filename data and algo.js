@@ -271,6 +271,29 @@ search([1, 2, 3, 4, 5, 6, 8, 9, 12, 15, 16, 29], 15); */
   return outerScopedVariable;
 } */
 
+//* examples for Recursion:
+/* function nestedAdd(arr) {
+  let sum = 0;
+  for (let i = 0; i < arr.length; i++) {
+    if (Array.isArray(arr[i])) {
+      sum += nestedAdd(arr[i]);
+    } else {
+      sum += arr[i];
+    }
+  }
+  console.log(sum);
+  return sum;
+}
+nestedAdd([1, 2, [[3]]]); */
+
+/* function factorial(num) {
+  if (num === 1 || num === 0) {
+    return 1;
+  }
+  return num * factorial(num - 1);
+}
+console.log(factorial(0)); */
+
 /* -------------------------------------------------------------------------- */
 /*                             Searching algorithm                            */
 /* -------------------------------------------------------------------------- */
@@ -414,8 +437,8 @@ search([1, 2, 3, 4, 5, 6, 8, 9, 12, 15, 16, 29], 15); */
 //* implementation:
 /* function insertionSort(arr) {
   for (let i = 1; i < arr.length; i++) {
-    let currentNode = arr[i];
-    for (let j = i - 1; currentNode < arr[j]; j--) {
+    let NumberToInsert = arr[i];
+    for (let j = i - 1; NumberToInsert < arr[j]; j--) {
       [arr[j + 1], arr[j]] = [arr[j], arr[j + 1]];
     }
   }
@@ -440,16 +463,37 @@ search([1, 2, 3, 4, 5, 6, 8, 9, 12, 15, 16, 29], 15); */
 
 //* implementation:
 /* function mergeSort(arr) {
+  //base case, return if leng 1 or 0
   if (arr.length <= 1) {
     return arr;
   }
-  let middle = Math.floor(arr.length / 2);
-  let left = mergeSort(arr.slice(0, middle));
-  let right = mergeSort(arr.slice(middle));
-  return merge(left, right);
-}
+  //break into 2 smaller arrays
+  let beginningIndex = 0;
+  let middleIndex = Math.floor(arr.length / 2);
+  let endIndex = arr.length;
+  let newLeftArr = arr.slice(beginningIndex, middleIndex);
+  let newRightArr = arr.slice(middleIndex, endIndex);
 
-function merge(arr1, arr2) {
+  //call mergeSort on left and right (recursive)
+  const sortedLeftArr = mergeSort(newLeftArr);
+  const sortedRightArr = mergeSort(newRightArr);
+
+  //return the merge from left and right
+  return merge(sortedLeftArr, sortedRightArr);
+
+  
+  // mo5tsra
+  //   if (arr.length <= 1) {
+  //   return arr;
+  // }
+  // let middle = Math.floor(arr.length / 2);
+  // let left = mergeSort(arr.slice(0, middle));
+  // let right = mergeSort(arr.slice(middle));
+  // return merge(left, right);
+ 
+} */
+
+/* function merge(arr1, arr2) {
   let pointer1 = 0;
   let pointer2 = 0;
   let newArray = [];
@@ -472,9 +516,11 @@ function merge(arr1, arr2) {
   }
   return newArray;
 } */
+
 // merge([1, 10, 50], [2, 14, 99, 100]);
 // debugger;
-// mergeSort([1, 10, 50, 2, 14, 99, 100]);
+// console.log(mergeSort([1, 10, 50, 2, 14, 99, 100]));
+// console.log(mergeSort([10, 5, 3, 8, 2, 6, 4, 7, 9, 1]));
 
 /* -------------------------------------------------------------------------- */
 /*                                 Quick Sort                                 */
@@ -591,11 +637,11 @@ findMin(173); */
 
 //Fractional Knapsack Problem(el 7ramy)(Fractional deh y3ny el weigths ele 3nde qabla ll t2sem)(feh no3 tany msh Fractional w dah msh byt7l bl greedyalgorithm )
 //here we need min weight with max value.
-function itemsOfMaxValue(capacity) {
-  let weigths = [];
-  let values = [];
-  let units = [];
-}
+// function itemsOfMaxValue(capacity) {
+//   let weigths = [];
+//   let values = [];
+//   let units = [];
+// }
 
 //* datastructure:
 
@@ -1372,7 +1418,7 @@ hash('cyan', 13); //5 */
 // el ms2ala el mshhora ele bayn feha gedan el fkra deh heya fibonacci seris(0,1,1,2,3,5)
 
 // fibonacci seris:(time complexity=<O(2^n))
-function fib(n) {
+/* function fib(n) {
   if (n === 0) {
     return 0;
   }
@@ -1381,4 +1427,4 @@ function fib(n) {
   }
   return fib(n - 1) + fib(n - 2);
 }
-fib(5);
+fib(5); */
