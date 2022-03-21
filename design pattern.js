@@ -497,6 +497,8 @@ console.log(transperentShape1.getData()); */
 //It is a structural pattern that focuses on the sharing of data amongst related objects. It helps prevent repetitive code, hence, increases efficiency when it comes to data sharing as well as conserving the memory.
 //It takes the common data structs/objects that are used by a lot of objects and stores them in an external object (flyweight) for sharing; you could say that it is used for caching purposes. So the same data does not need to have separate copies for each object; instead, it is shared amongst all.
 
+//8alban byost5dm fe 7aga shbh el singleton, y3ny lw 3ayz msln 23ml objects kteer w fe mnha mtkrr, 23ml check el 2wel lw mtkrra 2rg3 ele mwgoda 2sln 8er kda 23mlo create gded 3ady. shbh el singlton bs n2dr n2ol en el singlton bykon object wa7d mytkrrsh 3ala mstwa el app, enma hena 2ktr mn object.
+
 //* example1:
 /* class Color {
   constructor(name) {
@@ -538,7 +540,7 @@ class colorCreator {
   }
 }
 
-//h3ml hena DressFactory class ykon hwa ele y3ml create ll object b function tkon bt3ml check lw el object dah et3ml abl kda wala la2, b7es lw et3ml 2bl kda 2tl3 ele mt5zn w m3mlsh gded.
+// h3ml hena DressFactory class ykon hwa ele y3ml create ll object b function tkon bt3ml check lw el object dah et3ml abl kda wala la2, b7es lw et3ml 2bl kda 2tl3 ele mt5zn w m3mlsh gded.
 class DressFactory {
   constructor() {
     this.dresses = {};
@@ -1075,3 +1077,4 @@ controlPanel.pressButton(printCommand); */
 //proxy
 //decorator
 //composite
+//Flyweight
