@@ -581,3 +581,5 @@ console.log(Array.from(doc.body.getElementsByTagName("*")) );
 htmlStr.match(/<[^>]+>/gi) 
 htmlStr.replace(/[p8074]/gi,'') 
 */
+
+/* https://stackoverflow.com/questions/62462345/how-to-check-if-dom-elements-are-correctly-nested */

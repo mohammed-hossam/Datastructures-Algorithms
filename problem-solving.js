@@ -72,3 +72,55 @@
 /* -------------------------------------------------------------------------- */
 /*                                     end                                    */
 /* -------------------------------------------------------------------------- */
+
+// Given an array of integers, calculate the ratios of its elements that are positive, negative, and zero. Print the decimal value of each fraction on a new line with  places after the decimal.
+
+// Example
+
+// There are  elements, two positive, two negative and one zero. Their ratios are ,  and . Results are printed as:
+// function plusMinus(arr) {
+//   // Write your code here
+//   const length = arr.length;
+
+//   let pos = 0;
+//   let neg = 0;
+//   let zer = 0;
+
+//   for (let i = 0; i < arr.length; i++) {
+//     const el = arr[i];
+//     switch (true) {
+//       case el > 0:
+//         pos++;
+//         break;
+//       case el < 0:
+//         neg++;
+//         break;
+//       case el === 0:
+//         zer++;
+//         break;
+//     }
+//   }
+
+//   console.log(pos / length);
+//   console.log(neg / length);
+//   console.log(zer / length);
+// }
+
+// console.log(plusMinus([1, 1, 0, -1, -1]));
+
+/* -------------------------------------------------------------------------- */
+/*                                     end                                    */
+/* -------------------------------------------------------------------------- */
+
+// Given five positive integers, find the minimum and maximum values that can be calculated by summing exactly four of the five integers. Then print the respective minimum and maximum values as a single line of two space-separated long integers.
+
+// Example
+// arr=[1,3,5,7,9]
+// The minimum sum is 1+3+5+7=16  and the maximum sum is 3+5++7+9=24. The function prints: 16 24
+
+function miniMaxSum(arr) {
+  let min;
+  let max;
+}
+
+console.log(miniMaxSum([1, 3, 5, 7, 9]));
