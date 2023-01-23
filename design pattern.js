@@ -1066,6 +1066,8 @@ controlPanel.pressButton(turnOnCommand);
 controlPanel.pressButton(turnOffCommand);
 controlPanel.pressButton(printCommand); */
 
+//ANCHOR most important:
+
 //singleton
 //observer
 //Factory
@@ -1078,3 +1080,12 @@ controlPanel.pressButton(printCommand); */
 //decorator
 //composite
 //Flyweight
+
+//to avoid dupilcation
+/* 
+1) avoid hidden state (like a function should not depend on an outer state to be testable)
+2) nested logic (logic should be separated as fine graned functions to be reusable like crud methods)
+3)single responsibility princibale
+*/
+
+//to make sure we use immutabllity with objects, we can use object.freeze to prevent mutating it

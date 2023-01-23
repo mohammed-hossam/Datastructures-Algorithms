@@ -544,7 +544,7 @@ take(() => {
   console.log(this.hobaa);
 }); */
 
-//*lexical scope(parent bta3 el callback hwa el global scope(fellexical bs lw dynamic htb2a take heya l parent 3shan heya ele tm estd3a2 el callback feha w s3tha fl msal dah htb2a global brdo 3shan cb mfesh object estd3aha fa htro7 automatic ll global brdo) fa this heya el global hena)
+//*lexical scope(parent bta3 el callback hena hwa el global scope(fellexical bs lw dynamic htb2a take heya l parent 3shan heya ele tm estd3a2 el callback feha w s3tha fl msal dah htb2a global brdo 3shan cb mfesh object estd3aha fa htro7 automatic ll global brdo) fa this heya el global hena)
 /* var obj = {
   moka: 'memo',
   take: function take(cb) {
@@ -982,7 +982,7 @@ console.log(obj); */
 /*                                 new Keyword                                */
 /* -------------------------------------------------------------------------- */
 // ANCHOR - new Keyword:
-
+//el kalam hena 3ala gwa el constructor function
 //from MDN:
 //1) Creates a blank, plain JavaScript object.
 //2) Adds a property to the new object (__proto__) that links to the constructor function's prototype object
